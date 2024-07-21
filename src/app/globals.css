@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.navbar {
+		@apply fixed flex justify-center items-center bottom-0 md:bottom-auto md:top-0 left-0 md:h-full w-full md:w-1/4 bg-neutral-50 shadow-inner z-30;
+	}
+
+	.navbar-container-l {
+		@apply flex flex-col justify-start items-start py-12 px-4 h-full;
+	}
+
+	.navbar-container-b {
+		@apply flex flex-row justify-evenly items-center;
+	}
+
+	.navbar-option {
+		@apply relative flex flex-col justify-center items-center mx-4 pt-2 pb-1;
+	}
+
+	.navbar-option > * {
+		@apply text-neutral-400;
+	}
+
+	.navbar-option.active > * {
+		@apply text-red-500;
+	}
+
+	.navbar-option.active::after {
+		@apply absolute top-0 left-0 h-0.5 w-full bg-red-500;
+		content: "";
+	}
+
+	.movie-card {
+		@apply relative w-full md:w-48 h-full rounded-md shadow-md cursor-pointer;
+	}
+
+	.movie-card:hover > .options-btn {
+		@apply !block;
+	}
+
+	.poster {
+		@apply w-full h-[18rem] object-contain object-top mb-2 rounded-t-md transition-all duration-200 md:hover:brightness-50;
+	}
+
+	.poster-big {
+		@apply w-full h-full max-h-[50vh] bg-neutral-100 object-contain object-top mb-2 md:rounded-md shadow-md overflow-hidden;
+	}
+
+	.options-btn {
+		@apply md:!hidden absolute top-2 right-2 !text-neutral-50 p-1 bg-red-500 md:bg-transparent backdrop-blur-sm md:backdrop-blur-0 md:hover:!text-neutral-950 md:hover:bg-neutral-50 md:hover:bg-opacity-75 md:hover:backdrop-blur-sm rounded-full z-20 select-none;
+		transition: background 200ms;
+	}
+
+	/* .options-btn:hover + * {
+		@apply brightness-50;
+	} */
+
+	/* .movie-card-options {
+        @apply absolute top-0 right-0 !text-red-500 bg-neutral-50 hover:bg-transparent bg-opacity-75 backdrop-blur-sm hover:backdrop-blur-0 z-20 cursor-pointer;
+    }
+
+    .movie-card-options:hover ~ .options {
+        @apply block;
+    }
+
+    .options {
+        @apply absolute hidden flex-col top-0 right-0 p-4 pt-12 w-full h-[18rem] bg-neutral-50 bg-opacity-75 backdrop-blur-sm z-10;
+    }
+
+    .options:hover {
+        @apply flex;
+    } */
+}
+
+@layer utilities {
+	.btn {
+		@apply font-bold text-red-500 px-4 md:px-8 py-2 md:py-4 bg-neutral-50 rounded-md;
+	}
+
+	.btn-red {
+		@apply font-bold text-neutral-50 px-4 md:px-8 py-2 md:py-4 bg-red-500 rounded-md;
+	}
+}
