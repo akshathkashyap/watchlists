@@ -38,7 +38,7 @@ function SideNavbar({ currentUser }: { currentUser: IUser | null }) {
 			</div>
 			<div className='relative box-border w-full h-full border-t-2'>
 				<h1 className='text-xl py-4'>My Lists</h1>
-				<section className="h-max-content max-h-72 overflow-x-auto">
+				<section className='h-max-content max-h-72 overflow-x-auto'>
 					{watchlists &&
 						watchlists.map((watchlist, index: number) => {
 							return (
@@ -143,9 +143,7 @@ export default function Navbar() {
 
 	const [currentUser, setCurrentUser] = useState<IUser | null>(null);
 	const [showNavbar, setShowNavbar] = useState<boolean>(false);
-	const [showBottomNavbar, setShowBottomNavbar] = useState<boolean>(
-		window.innerWidth < 768
-	);
+	const [showBottomNavbar, setShowBottomNavbar] = useState<boolean>(false);
 
 	useEffect(() => {
 		dispatch(updateUser());
@@ -188,22 +186,26 @@ export default function Navbar() {
 		setShowNavbar(true);
 	}, [pathname]);
 
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			setShowBottomNavbar(window.innerWidth < 768);
+		}
+	}, []);
+
 	return (
 		<>
-			{
-				showNavbar && (
-					<nav className='navbar'>
-						{showBottomNavbar ? (
-							<BottomNavbar
-								pathname={pathname}
-								currentUser={currentUser}
-							></BottomNavbar>
-						) : (
-							<SideNavbar currentUser={currentUser}></SideNavbar>
-						)}
-					</nav>
-				)
-			}
+			{showNavbar && (
+				<nav className='navbar'>
+					{showBottomNavbar ? (
+						<BottomNavbar
+							pathname={pathname}
+							currentUser={currentUser}
+						></BottomNavbar>
+					) : (
+						<SideNavbar currentUser={currentUser}></SideNavbar>
+					)}
+				</nav>
+			)}
 		</>
 	);
 }

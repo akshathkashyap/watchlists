@@ -45,7 +45,7 @@
 	}
 
 	.poster-big {
-		@apply w-full h-full max-h-[50vh] bg-neutral-100 object-contain object-top mb-2 md:rounded-md shadow-md overflow-hidden;
+		@apply w-full h-full max-h-[50vh] bg-neutral-100 object-contain object-top mb-2 md:rounded-md md:shadow-md overflow-hidden;
 	}
 
 	.options-btn {
